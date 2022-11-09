@@ -4,18 +4,27 @@
    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
    
-<mapper namespace="com.pengsoo.freeboard.dao.mapper.IDao">
+	<mapper namespace="com.pengsoo.freeboard.dao.mapper.IDao">
+	<!-- 회원 관리 SQL -->
 	<insert id="joinMemberDao">
 		INSERT INTO member(mid, mpw, mname, memail) VALUES (#{param1}, #{param2}, #{param3}, #{param4})
 	</insert>
 
-<select id="checkIdDao" resultType="int">
+	<select id="checkIdDao" resultType="int">
 		SELECT COUNT(*) FROM member WHERE mid=#{param1}
 	</select>
 	
 	<select id="checkPwDao" resultType="int">
 		SELECT COUNT(*) FROM member WHERE mid=#{param1} AND mpw=#{param2}
 	</select>
+	<select id="memberInfoDao" resultType="com.pengsoo.freeboard.dto.MemberDto">
+		SELECT * FROM member WHERE mid=#{param1}
+	</select>
+	<!-- 게시판 관리 SQL -->
+	<insert id="writeDao">
+		INSERT INTO freeboard(fnum, fid, fname, ftitle, fcontent, fhit) 
+		VALUES(freeboard_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4}, 0)
+	</insert>
 	
 </mapper>   
 
