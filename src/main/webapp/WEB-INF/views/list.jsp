@@ -8,6 +8,23 @@
 <title>자유게시판</title>
 </head>
 <body>
+
+	<%
+		int idflag	= Integer.parseInt(request.getAttribute("idflag").toString());
+		if(idflag == 1) {
+		%>
+
+	${sid } 님 로그인 중 <input type="button" value="로그아웃" onclick="javascript:window.location='logout'">
+
+	<%
+		} else{
+	%>		
+ 	<input type="button" value="로그인" onclick="javascript:window.location='login'">
+	
+	<%
+	
+		}
+	%>
 	<h2>글 목록</h2>
 	<hr>
 	<table border="1" cellspacing="0" cellpadding="0" width="1000">
@@ -34,7 +51,7 @@
 		
 		</tr>
 		</c:forEach>
-			<td colspan="5" align="right"><a href="writeForm">글쓰기</a></td>
+			<td colspan="6" align="right"><a href="writeForm">글쓰기</a></td>
 	</table>
 	
 </body>

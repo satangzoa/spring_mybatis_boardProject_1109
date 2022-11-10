@@ -34,18 +34,17 @@
 			<th>등록일</th>
 			<td>${content.fdate }</td>
 		</tr>
-		<%
-		int idflag	= Integer.parseInt(request.getAttribute("idflag").toString());
-		if(idflag == 1) {
 		
-		%>
 		<tr>
 			<td colspan="2" align="right">
+			<%
+		int idflag	= Integer.parseInt(request.getAttribute("idflag").toString());
+		if(idflag == 1) 
+		
+		%>
+			
 				<input type="button" value="수정" onclick="javascript:window.location='modify_view?fnum=${content.fnum }'">
 				<input type="button" value="삭제" onclick="javascript:window.location='delete?fnum=${content.fnum }'">
-				<%
-		}
-				%>
 				<input type="button" value="목록" onclick="javascript:window.location='list'">
 			</td>
 		</tr>

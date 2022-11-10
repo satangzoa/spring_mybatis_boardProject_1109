@@ -45,5 +45,6 @@
 	<update id="upHit">
 		update freeboard set fhit = fhit + 1 where fnum=#{param1}
 	</update>
+	
 </mapper>   
 

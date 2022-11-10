@@ -165,7 +165,7 @@ public class FboardController {
 	}
 	
 	@RequestMapping(value = "list")
-	public String list( Model model) {
+	public String list(HttpServletRequest request, Model model) {
 
 		IDao dao = sqlSession.getMapper(IDao.class);//dao를 만들어야 list호출 가능
 		
@@ -174,6 +174,19 @@ public class FboardController {
 //		int count = dtos.size();//size 가 총 글의 갯수
 //		model.addAttribute("boardCount", count);
 		
+		HttpSession session = request.getSession();
+		
+		 String sid = (String) session.getAttribute("sessionId");
+		 
+		 int idflag = 0;
+		
+		 if(sid != null) {//로그인 되어있는 경우
+			 idflag = 1;
+			 model.addAttribute("sid",sid);
+		 }
+		 
+		 model.addAttribute("idflag",idflag);//1이면 로그인 중 0이면 비로그인
+		 
 		model.addAttribute("boardCount", dtos.size());
 		model.addAttribute("list", dtos);
 		
@@ -205,7 +218,8 @@ public class FboardController {
 	     
 	     int idflag = 0;
 	     
-	     if((sid != null ) && sid.equals(fid)) {
+	     if((sid != null ) && (sid.equals(fid))) {
+	    	 idflag = 1;
 	     } 
 	    	 model.addAttribute("idflag",idflag);//idflag==1 이면 수정 삭제 권한 설정
 	   

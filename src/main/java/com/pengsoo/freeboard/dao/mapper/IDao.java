@@ -28,4 +28,5 @@ public interface IDao {
 	public void modifyDao(String fnum, String fname, String ftitle,String fcontent);//글수정
 
 	public void upHit(String fnum);//조회수 증가 함수
+	
 }
