@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>자유게시판</title>
 </head>
 <body>
 	<h2>글 목록</h2>
@@ -19,12 +19,16 @@
 			<th>조회수</th>
 			<th>등록일</th>
 		</tr>
+		
+			총 게시글 수 : ${boardCount }개<br>
 		<c:forEach items="${list }" var="fbdto">
-		<tr>
+		<tr align="right">
 			<td>${fbdto.fnum }</td>
 			<td>${fbdto.fid }</td>
 			<td>${fbdto.fname }</td>
-			<td>${fbdto.ftitle }</td>
+			<td align="left">&nbsp;
+			<a href="content_view?fnum=${fbdto.fnum }">${fbdto.ftitle }</a>	
+			</td>
 			<td>${fbdto.fhit }</td>
 			<td>${fbdto.fdate }</td>
 		
@@ -32,5 +36,6 @@
 		</c:forEach>
 			<td colspan="5" align="right"><a href="writeForm">글쓰기</a></td>
 	</table>
+	
 </body>
 </html>
