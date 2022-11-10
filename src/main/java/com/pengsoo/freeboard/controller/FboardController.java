@@ -199,14 +199,13 @@ public class FboardController {
 		  
 		  String sid = (String) session.getAttribute("sessionId");// 현재 세션에 로그인 되어 있는 아이디 가져오기
 		  
-		 String fid = content.getFid(); //현재 보고 있는 글을 쓴 아이디
+		 String fid = dtos.getFid(); //현재 보고 있는 글을 쓴 아이디
 		 
 	    
 	     
 	     int idflag = 0;
 	     
 	     if((sid != null ) && sid.equals(fid)) {
-	    	 int idflag = 1;
 	     } 
 	    	 model.addAttribute("idflag",idflag);//idflag==1 이면 수정 삭제 권한 설정
 	   
